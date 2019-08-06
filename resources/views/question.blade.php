@@ -36,6 +36,12 @@
                                 <div class="card-body">{{$answer->body}}</div>
                                 <div class="card-footer">
 
+                                    <div class="interaction float-left">
+                                    <a href="#" class="like">Vote Up</a>
+                                        /
+                                    <a href="#" class="like">Vote Down</a>
+                                    </div>
+
                                     <a class="btn btn-primary float-right"
                                        href="{{ route('answers.show', ['question_id'=> $question->id,'answer_id' => $answer->id]) }}">
                                         View
@@ -52,4 +58,10 @@
                     </div>
                 </div>
             </div>
+
+
+            <script>
+                var token = '{{ Session::token() }}';
+                var urlLike = '#';
+            </script>
 @endsection
