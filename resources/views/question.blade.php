@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row ">
-            <div class="col-md-8">
+            <div class="col-md-7">
                 <div class="card">
                     <div class="card-header">Question</div>
 
@@ -23,7 +23,7 @@
                 </div>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-5">
                 <div class="card">
                     <div class="card-header"><a class="btn btn-primary float-left"
                                                 href="{{ route('answers.create', ['question_id'=> $question->id])}}">
@@ -32,14 +32,16 @@
 
                     <div class="card-body">
                         @forelse($question->answers as $answer)
-                            <div class="card">
+                            <div class="card" >
                                 <div class="card-body">{{$answer->body}}</div>
-                                <div class="card-footer">
+                                <div class="card-footer" data-answerid= "{{ $answer->id }}">
 
                                     <div class="interaction float-left">
-                                        <a href="#" class="vote">{{ Auth::user()->votes()->where('answer_id', $answer->id)->first() ? Auth::user()->votes()->where('answer_id', $answer->id)->first()->vote == 1 ? 'You vote up this answer' : 'Vote Up' : 'Vote Up'}}</a>
+                                        <a href="#"
+                                           class="vote">{{ Auth::user()->votes()->where('answer_id', $answer->id)->first() ? Auth::user()->votes()->where('answer_id', $answer->id)->first()->vote == 1 ? 'You vote up this answer' : 'Vote Up' : 'Vote Up'}}</a>
                                         /
-                                        <a href="#" class="vote">{{ Auth::user()->votes()->where('answer_id', $answer->id)->first() ? Auth::user()->votes()->where('answer_id', $answer->id)->first()->vote == 0 ? 'You vote down this answer' : 'Vote Down' : 'Vote Down'  }}</a>
+                                        <a href="#"
+                                           class="vote">{{ Auth::user()->votes()->where('answer_id', $answer->id)->first() ? Auth::user()->votes()->where('answer_id', $answer->id)->first()->vote == 0 ? 'You vote down this answer' : 'Vote Down' : 'Vote Down'  }}</a>
                                     </div>
 
                                     <a class="btn btn-primary float-right"

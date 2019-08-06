@@ -6,6 +6,7 @@ use App\Question;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Answer;
+use App\Vote;
 
 class AnswerController extends Controller
 {
