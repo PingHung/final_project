@@ -32,3 +32,5 @@ Route::delete('/questions/{question_id}/answer/{answer_id}', 'AnswerController@d
 Route::resources([
     'question' => 'QuestionController',
 ]);
+
+Route::post('/vote', 'AnswerController@VoteAnswer')->name('vote');

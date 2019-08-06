@@ -112,4 +112,39 @@ class AnswerController extends Controller
         $answer->delete();
         return redirect()->route('question.show',['question_id' => $question])->with('message', 'Delete');
     }
+
+
+    public function VoteAnswer(Request $request)
+    {
+        $answer_id = $request['answerId'];
+        $is_vote = $request['isVote'] === 'true';
+        $update = false;
+        $answer = Answer::find($answer_id);
+        if (!$answer) {
+            return null;
+        }
+        $user = Auth::user();
+        $like = $user->votes()->where('answer_id', $answer_id)->first();
+        if ($vote) {
+            $vote_up = $vote->vote;
+            $update = true;
+            if ($vote_up == $is_vote) {
+                $vote->delete();
+                return null;
+            }
+        } else {
+            $vote = new Vote();
+        }
+        $vote->vote = $is_vote;
+        $vote->user_id = $user->id;
+        $vote->answer_id = $answer->id;
+        if ($update) {
+            $vote->update();
+        } else {
+            $like->save();
+        }
+        return null;
+    }
+
+    
 }

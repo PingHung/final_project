@@ -78,6 +78,6 @@ class User extends Authenticatable
     }
     public function votes()
     {
-        return $this->hasMany('App\vote');
+        return $this->hasMany('App\Vote');
     }
 }

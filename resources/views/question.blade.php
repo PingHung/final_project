@@ -37,9 +37,9 @@
                                 <div class="card-footer">
 
                                     <div class="interaction float-left">
-                                    <a href="#" class="like">Vote Up</a>
+                                        <a href="#" class="vote">Vote Up</a>
                                         /
-                                    <a href="#" class="like">Vote Down</a>
+                                        <a href="#" class="vote">Vote Down</a>
                                     </div>
 
                                     <a class="btn btn-primary float-right"
@@ -62,6 +62,6 @@
 
             <script>
                 var token = '{{ Session::token() }}';
-                var urlLike = '#';
+                var urlVote = '{{ route('vote') }}';
             </script>
 @endsection
