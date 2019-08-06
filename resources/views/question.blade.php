@@ -37,9 +37,9 @@
                                 <div class="card-footer">
 
                                     <div class="interaction float-left">
-                                        <a href="#" class="vote">Vote Up</a>
+                                        <a href="#" class="vote">{{ Auth::user()->votes()->where('answer_id', $answer->id)->first() ? Auth::user()->votes()->where('answer_id', $answer->id)->first()->vote == 1 ? 'You vote up this answer' : 'Vote Up' : 'Vote Up'}}</a>
                                         /
-                                        <a href="#" class="vote">Vote Down</a>
+                                        <a href="#" class="vote">{{ Auth::user()->votes()->where('answer_id', $answer->id)->first() ? Auth::user()->votes()->where('answer_id', $answer->id)->first()->vote == 0 ? 'You vote down this answer' : 'Vote Down' : 'Vote Down'  }}</a>
                                     </div>
 
                                     <a class="btn btn-primary float-right"

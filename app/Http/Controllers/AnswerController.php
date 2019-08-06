@@ -124,7 +124,7 @@ class AnswerController extends Controller
             return null;
         }
         $user = Auth::user();
-        $like = $user->votes()->where('answer_id', $answer_id)->first();
+        $vote = $user->votes()->where('answer_id', $answer_id)->first();
         if ($vote) {
             $vote_up = $vote->vote;
             $update = true;
@@ -141,10 +141,9 @@ class AnswerController extends Controller
         if ($update) {
             $vote->update();
         } else {
-            $like->save();
+            $vote->save();
         }
         return null;
     }
 
-    
 }
