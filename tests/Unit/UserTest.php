@@ -34,4 +34,9 @@ class UserTest extends TestCase
         $user = factory(\App\User::class)->make();
         $this->assertTrue(is_object($user->profile()->get()));
     }
+    public function testVotes()
+    {
+        $user = factory(\App\User::class)->make();
+        $this->assertTrue(is_object($user->votes()->get()));
+    }
 }
